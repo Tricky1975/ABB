@@ -43,6 +43,8 @@ Import "imp/startup.bmx"
 ' Exclusively for the GameJolt.com download.
 ' This source file is close-sourced in order not to compromise GameJolt's security
 ' And therefore not distributed with the rest of the stuff
+' If you obtained this source from GitHub, please put a "'" before the Import statement (I can't as that hinders my development process)
+' And the game should compile normally.
 Import "Secu/GameJolt.bmx"
 
 
