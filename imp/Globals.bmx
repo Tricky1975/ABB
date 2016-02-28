@@ -30,7 +30,7 @@ End Rem
 Strict
 
 Import tricky_units.identify
-Import tricky_units.initfile
+Import tricky_units.initfile2
 Import tricky_units.Dirry
 Import tricky_units.GameVars
 Import tricky_units.jcr6stringmap

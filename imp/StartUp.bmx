@@ -29,7 +29,7 @@ Version: 15.02.25
 End Rem
 Strict
 Import tricky_units.Dirry
-Import tricky_units.Initfile
+Import tricky_units.Initfile2
 
 Import "Globals.bmx"
 
@@ -42,7 +42,10 @@ Local ak
 Notify "WARNING! You are about to play a build for PPC.~nThis CPU type is no longer supported. I'll let you play on, but expect some undesirable behavior!"
 ?
 DebugLog "Loading: "+Inifile
-If FileType(inifile) Ini.Load(inifile$)
+If FileType(inifile) 
+	Print "Reading: "+inifile
+	LoadIni inifile,ini,True 'Ini.Load(inifile$)
+	EndIf
 If Not Ini.C("FullScreen.Asked").ToInt()
 	For Local ak=EachIn bits
 		If GraphicsModeExists(800,600,ak) And bit=0 bit=ak
@@ -57,13 +60,15 @@ If Not Ini.C("FullScreen.Asked").ToInt()
 		EndIf
 	EndIf
 CreateDir ExtractDir(Inifile),1	
-Ini.Save(Inifile)
+SaveIni inifile,ini 'Ini.Save(Inifile)
 Print "Changing to "+Ini.C("FullScreen.Bit")+"bit graphics mode!"
-?Debug
+?debug
 Graphics 800,600 ' In debug mode always windowed by default
+Print "Because we are debugging now, always the windowed mode"
 ?Not debug
 Graphics 800,600,Ini.C("FullScreen.Bit").ToInt()
 ?
+Print "Going to alphablend"
 SetBlend alphablend
 End Function	
 	

@@ -33,6 +33,7 @@ Strict
 Framework jcr6.zlibdriver
 Import    brl.pngloader
 Import    brl.freetypefont
+Import    brl.glmax2d
 
 Import "imp/LanguageSelector.bmx"
 Import "imp/JCRError.bmx"
