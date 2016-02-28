@@ -57,7 +57,7 @@ Type Aziella_NewPlayer Extends aziellabase
 	NU_Screen = TUI_CreateScreen(Null,UIScreen)
 	font = LoadImageFont(JCR_E(JCR,FONT_NEWUSERHEAD),25)	
 	langtie "EnterName",TUI_CreateLabel("--",400,25,NU_Screen,font,2)
-	getfont inputfont,JCR_E(JCR,FONT_INPUT),20
+	GetFont inputfont,JCR_E(JCR,FONT_INPUT),20
 	G_UserName = TUI_CreateUserInput:TUI_Gadget(200,100,400,NU_SCREEN)
 	G_UserName.Font = InputFont
 	TUI_ActivateGadget G_UserName
@@ -111,7 +111,7 @@ Type Aziella_NewPlayer Extends aziellabase
 			AziellaSpeak("NewUser/Hello")
 			ConsoleWrite "To the main menu"
 			Ini.D("DefaultPlayer",UserName)				
-			Ini.Save(IniFile)
+			SaveIni inifile,ini 'Ini.Save(IniFile)
 			EndIf
 		EndIf
 	EndMethod
@@ -126,3 +126,36 @@ Type Aziella_NewPlayer Extends aziellabase
 	End Method
 
 	End Type
+	
+Type Aziella_ChangePlayer Extends AziellaBase
+
+	Field NU_Screen:TUI_Gadget
+	Field Back:TUI_Gadget
+
+      Method OnLoad()
+	loadAziellaPics
+	UIScreen.TiledImage=True
+	UISCreen.idleimage = ConsoleBackGroundPicture
+	CreateAquarium UIScreen
+	NU_Screen = TUI_CreateScreen(Null,UIScreen)
+	back = TUI_CreateButton("",20,590-ImageHeight(UI_BackButton),UIScreen,UI_BackButton)	
+
+	End Method
+
+	Method OnCycle()
+	End Method
+	
+	Method OnInput()
+	If back.action ToScreen("MainMenu")
+	End Method
+
+	Method OnSwitch() 
+	' This method only had to exist	
+	EndMethod
+
+
+	Method OnTerminate()
+	Notify "Closing this application is not possible right now. Please continue the sequence until you reached the main menu!"
+	End Method
+
+End Type	

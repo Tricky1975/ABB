@@ -46,7 +46,7 @@ Type MainMenu Extends AziellaBase
 
 	Method OnLoad() 
 	Local Pix:TPixmap = LoadPixmap(JCR_B(JCR,"GFX/GENERAL/LOGO.PNG"))
-	getfont inputfont,JCR_E(JCR,FONT_INPUT),20
+	GetFont inputfont,JCR_E(JCR,FONT_INPUT),20
 	CreateAquarium UIScreen
 	' Start Logo
 	If Not pix error "Logo not loaded"
@@ -104,6 +104,7 @@ Type MainMenu Extends AziellaBase
 		EndIf
 	If credits.action toscreen "Credits"
 	If config.action ToScreen "Config"	
+	If changeplayer.action ToScreen "ChangePlayer"
 	If Trophies.action ToScreen "Trophies"
 	If StartGame.action ToScreen "Game"
 	End Method
@@ -119,7 +120,7 @@ Type TUI_GDrvLogo Extends TUI_Gadgetdriver
 	Method Run(G:TUI_Gadget,Enabled)
 		Assert g.idleimage Else "No image for a logo?"
 		'Print "Before logo"
-		watereffect(g.idleimage,g.x,g.y,1,20,1,.05)	
+		WaterEffect(g.idleimage,g.x,g.y,1,20,1,.05)	
 		'Print "After Logo"
 		End Method
 

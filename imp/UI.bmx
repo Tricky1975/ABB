@@ -45,6 +45,7 @@ newscreen "MainMenu",New MainMenu
 NewScreen "Config",New AziellaConfig
 newscreen "Credits",New ScreenCredits
 NewScreen "Trophies",New TrophyOverview
+newscreen "ChangePlayer",New Aziella_changeplayer
 NewScreen "Game",Game
 currentscreen = Screen("Language") ' The game always starts with the language selector 
 End Function 
