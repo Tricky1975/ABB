@@ -166,6 +166,14 @@ Type Aziella_ChangePlayer Extends AziellaBase
 		EndIf
 	If NewUser.Action 
 		saveuser
+		UserName$ = ""
+		UserOnline:TMap = New TMap
+		cfgTutorial = True
+		CfgColorBlind = False
+		cfgSFX = True
+		Score:Long = 0
+		LevelScore:Long = 0
+		Level = 0
 		ToScreen "NewPlayer"		
 		EndIf
 	End Method

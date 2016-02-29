@@ -219,6 +219,7 @@ Type TGame Extends AziellaBase
 	' Reset all data before loading
 	For x=0 Until fieldwidth For y=0 Until fieldheight 
 		gamefield[x,y]=0 
+		gametiles[x,y]=0
 		GMFXY[x,y,0] = x*tilesize
 		GMFXY[x,y,1] = (-(fieldheight*80))+(y*tilesize*2)
 		Next Next ' 2x for = 2x next
