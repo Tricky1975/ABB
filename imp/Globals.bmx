@@ -36,6 +36,8 @@ Import tricky_units.GameVars
 Import tricky_units.jcr6stringmap
 Import tricky_units.console
 Import tricky_units.numdump
+Import tricky_units.ListDir
+Import tricky_units.Bye
 
 Import "Secu.bmx" 
 Import "Error.bmx"

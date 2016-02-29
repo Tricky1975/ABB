@@ -86,9 +86,9 @@ Function Init_Trophies()
 ConsoleWrite "Loading trophies"
 ConsoleShow
 Flip
-TrophyNames = loadstringmap(JCR,"Data/Achievements/Names")
-TrophyDescs = loadstringmap(JCR,"Data/Achievements/Descriptions")
-End function
+TrophyNames = LoadStringMap(JCR,"Data/Achievements/Names")
+TrophyDescs = LoadStringMap(JCR,"Data/Achievements/Descriptions")
+End Function
 
 Function Init()
 ConsoleWrite "Aziella's Babling Bubbles",0,255,255

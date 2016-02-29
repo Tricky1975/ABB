@@ -82,7 +82,7 @@ Type MainMenu Extends AziellaBase
 	For Local G:TUI_Gadget=EachIn Butlist
 		G.font = inputfont
 		Next
-	Copyright = TUI_CreateLabel("(c) Copyright 2015, Jeroen P. Broks",400,575,UIScreen,inputfont,2)
+	Copyright = TUI_CreateLabel("(c) Copyright 2015-20"+Left(MKL_NewestVersion(),2)+", Jeroen P. Broks",400,575,UIScreen,inputfont,2)
 	ShowUserName = TUI_CreateLabel("<No User>",400,115,UISCREEN,INPUTFONT,2)
 	SupportAziella(UIScreen) ' This one must ALWAYS be the last gadget
 	JCR_E_Clear

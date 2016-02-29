@@ -190,6 +190,10 @@ For s=EachIn seculist
 	Next	
 End Function
 
+Function GetUserList:TList()
+Return ListDir(Dirry(userdir),LISTDIR_FILEONLY)
+End Function
+
 Function OnLineUser:StringMap(site$)
 If Not MapContains(UserOnline,site) ConsoleWrite "Requested an unknown site: "+site,255,180,0
 Return StringMap(MapValueForKey(UserOnline,site))

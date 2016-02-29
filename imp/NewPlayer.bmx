@@ -131,31 +131,52 @@ Type Aziella_ChangePlayer Extends AziellaBase
 
 	Field NU_Screen:TUI_Gadget
 	Field Back:TUI_Gadget
+	Field NewUser:TUI_Gadget
+	Field Ok:TUI_Gadget
+	Field UserList:TUI_Gadget
 
       Method OnLoad()
 	loadAziellaPics
 	UIScreen.TiledImage=True
 	UISCreen.idleimage = ConsoleBackGroundPicture
 	CreateAquarium UIScreen
+	If Not UI_SmallButton Then UI_SmallButton = LoadImage(JCR_B(JCR,"GFX/UI/SmallButton.png"))
 	NU_Screen = TUI_CreateScreen(Null,UIScreen)
 	back = TUI_CreateButton("",20,590-ImageHeight(UI_BackButton),UIScreen,UI_BackButton)	
-
+      NewUser = TUI_CreateButton("NU",400-(ImageWidth(UI_SmallButton)/2),590-ImageHeight(UI_smallbutton),UIScreen,UI_SmallButton)
+      langtie "NewUser",NewUser
+      Ok = TUI_CreateButton("OK",780-(ImageWidth(UI_SmallButton)),590-ImageHeight(UI_smallbutton),UIScreen,UI_SmallButton)
+      langtie "Okay",Ok
+	Ok.Font = inputfont
+	NewUser.Font = inputfont
+	UserList = tui_createlistbox(20,100,760,300,UIScreen)
+	userlist.font = inputfont
 	End Method
 
 	Method OnCycle()
+	Ok.Enabled = UserList.SelectedItem()>=0
 	End Method
 	
 	Method OnInput()
-	If back.action ToScreen("MainMenu")
+	If back.action ToScreen "MainMenu"
+	If ok.action Then
+		saveuser
+		loaduser userlist.itemtext()
+		toscreen "MainMenu"
+		EndIf
+	If NewUser.Action 
+		saveuser
+		ToScreen "NewPlayer"		
+		EndIf
 	End Method
 
 	Method OnSwitch() 
-	' This method only had to exist	
+	UserList.Items = GetUserList()	
 	EndMethod
 
 
 	Method OnTerminate()
-	Notify "Closing this application is not possible right now. Please continue the sequence until you reached the main menu!"
+	If Proceed("Quitting now might destroy any unsaved data. You can best do this from the main menu.~n~nDo yo still wish to continue?")=1 Bye	
 	End Method
 
 End Type	
